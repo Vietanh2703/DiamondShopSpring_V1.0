@@ -1,0 +1,110 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #3f51b5;
+  color: #ffffff;
+  height: 60px;
+
+  .navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  button {
+    color: #ffffff;
+    background-color: #3f51b5;
+  }
+
+
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav-right {
+    a {
+      color: #000000;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #000000;
+      }
+
+      &.active {
+        color: #f9d342;
+      }
+    }
+  }
+}
+
+
+button[mat-button] {
+  color: #ffffff;
+  &:hover {
+    background-color: #3f51b5;
+  }
+}
+
+button[mat-button][routerLinkActive="active"] {
+  background-color: #3f51b5;
+}
+
+mat-menu {
+  button[mat-menu-item] {
+    color: #617fff;
+    &:hover {
+      background-color: #c5cae9;
+    }
+  }
+}
+
+.mat-sidenav {
+  background-color: #3f51b5;
+  width: 180px;
+}
+
+.side-nav-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-item{
+  padding: 10px 20px;
+  color: #ffffff !important;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #c5cae9;
+  }
+}
+
+
+@media (min-width: 900px) {
+  #menuIcon {
+    display: none;
+  }
+
+  #menuIcon1 {
+    display: none;
+  }
+
+  #menuIcon2 {
+    display: none;
+  }
+
+  .mat-sidenav {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .top-menu-item {
+    display: none;
+  }
+}

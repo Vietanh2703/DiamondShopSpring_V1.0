@@ -1,0 +1,165 @@
+<div *ngIf="!isCustomerLoggedIn && !isManagerLoggedIn">
+<mat-toolbar color="primary" class="navbar" *ngIf="showNavbar">
+  <div class="nav-left">
+    <button mat-icon-button id="menuIcon" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  <span class="navbar-brand">Diona's Diamond Shop</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/home" routerLinkActive="active" class="top-menu-item">Home</button>
+  <button mat-button routerLink="/products" routerLinkActive="active" class="top-menu-item">Product</button>
+  <button mat-button routerLink="/cart" routerLinkActive="active" class="top-menu-item">Cart</button>
+</div>
+  <div class="nav-right">
+  <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+<button mat-button routerLink="/signup" routerLinkActive="active">Register</button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [fixedInViewport]="true" [fixedTopGap]="60"  color="primary" mode="side" opened>
+    <div class="side-nav-items">
+      <div>
+        <a (click)="sidenav.close()" mat-button routerLink="/home" routerLinkActive="active" class="side-menu-item">
+          <mat-icon>home</mat-icon>
+          Home
+        </a>
+      </div>
+
+      <div>
+        <a (click)="sidenav.close()" mat-button routerLink="/products" routerLinkActive="active" class="side-menu-item">Product</a>
+
+      </div>
+
+      <div>
+        <a (click)="sidenav.close()" mat-button routerLink="/cart" routerLinkActive="active" class="side-menu-item">Cart</a>
+
+      </div>
+</div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  <router-outlet></router-outlet>
+<!--The router-outlet helps Angular to show required components-->
+
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <div class="nav-left">
+      <button mat-icon-button id="menuIcon1" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="navbar-brand">Diona's Diamond Shop</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/customer/dashboard" routerLinkActive="active" class="top-menu-item">Dashboard</button>
+      <button mat-button routerLink="/customer/my-orders" routerLinkActive="active" class="top-menu-item">Orders</button>
+      <button mat-button routerLink="/customer/cart" routerLinkActive="active" class="top-menu-item">Cart</button>
+      <button mat-button routerLink="/customer/wishlist" routerLinkActive="active" class="top-menu-item">Wishlist</button>
+    </div>
+    <div class="nav-right">
+      <button mat-button routerLink="/customer/profile" routerLinkActive="active">Profile</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [fixedInViewport]="true" [fixedTopGap]="60"  color="primary" mode="side" opened>
+      <div class="side-nav-items">
+        <div>
+          <a (click)="sidenav.close()" mat-button routerLink="/customer/dashboard" routerLinkActive="active" class="side-menu-item">
+            <mat-icon>home</mat-icon>
+            Dashboard
+          </a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button routerLink="/customer/my-orders" routerLinkActive="active" class="side-menu-item">Orders</a>
+
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button routerLink="/customer/cart" routerLinkActive="active" class="side-menu-item">Cart</a>
+
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button routerLink="/customer/wishlist" routerLinkActive="active" class="side-menu-item">Wishlist</a>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <router-outlet></router-outlet>
+  <!--The router-outlet helps Angular to show required components-->
+</div>
+
+<div *ngIf="isManagerLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <div class="nav-left">
+      <button mat-icon-button id="menuIcon2" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="navbar-brand">Diona's Diamond Shop</span>
+      <span class="spacer"></span>
+        <button mat-button [routerLink]="['/manager/dashboard']" routerLinkActive="active" class="top-menu-item">Dashboard</button>
+        <button mat-button [routerLink]="['/manager/analytics']" routerLinkActive="active" class="top-menu-item">Analytics</button>
+        <button mat-button [routerLink]="['/manager/category']" routerLinkActive="active" class="top-menu-item">Category</button>
+        <button mat-button [routerLink]="['/manager/product']" routerLinkActive="active" class="top-menu-item">Product</button>
+        <button mat-button [routerLink]="['/manager/orders']" routerLinkActive="active" class="top-menu-item">Orders</button>
+        <button mat-button [routerLink]="['/manager/post-coupon']" routerLinkActive="active" class="top-menu-item">Post Coupon</button>
+        <button mat-button [routerLink]="['/manager/coupons']" routerLinkActive="active" class="top-menu-item">Coupons</button>
+    </div>
+    <div class="nav-right">
+      <button mat-button routerLink="/manager/profile" routerLinkActive="active">Profile</button>
+      <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [fixedInViewport]="true" [fixedTopGap]="60"  color="primary" mode="side">
+      <div class="side-nav-items">
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/dashboard']" routerLinkActive="active" class="side-menu-item">
+            <mat-icon>home</mat-icon>
+            Dashboard
+          </a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/analytics']" routerLinkActive="active" class="side-menu-item">Analytics</a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/category']" routerLinkActive="active" class="side-menu-item">Category</a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/product']" routerLinkActive="active" class="side-menu-item">Product</a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/orders']" routerLinkActive="active" class="side-menu-item">Orders</a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/post-coupon']" routerLinkActive="active" class="side-menu-item">Post Coupon</a>
+        </div>
+
+        <div>
+          <a (click)="sidenav.close()" mat-button [routerLink]="['/manager/coupons']" routerLinkActive="active" class="side-menu-item">Coupons</a>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!--The router-outlet helps Angular to show required components-->
+</div>
